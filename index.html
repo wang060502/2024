@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024年度总结 - 技术成长之路</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1920x1080?technology') center/cover;
+        }
+
+        .header-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff6b6b, #4ecdc4);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            /* position: relative; */
+            width: 90%;
+            padding: 0 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 0;
+        }
+
+        .achievement-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .stats {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .stat-item {
+            display: inline-block;
+            margin: 0 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .stat-label {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .analysis-section {
+            text-align: center;
+            padding: 80px 0 40px;
+        }
+
+        .chart-wrapper {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .chart-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 800px;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .tech-stack-section {
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            margin: 50px 0;
+        }
+
+        .tech-category {
+            margin-bottom: 30px;
+        }
+
+        .tech-category h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .tech-category h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 2px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 标签颜色 */
+        .tech-tag.html { background: #E44D26; }
+        .tech-tag.css { background: #264DE4; }
+        .tech-tag.js { background: #F7DF1E; color: #000; }
+        .tech-tag.jquery { background: #0769AD; }
+        .tech-tag.ts { background: #3178C6; }
+        .tech-tag.python { background: #3776AB; }
+        .tech-tag.php { background: #777BB4; }
+        .tech-tag.vue { background: #4FC08D; }
+        .tech-tag.node { background: #339933; }
+        .tech-tag.express { background: #000000; }
+        .tech-tag.bootstrap { background: #7952B3; }
+        .tech-tag.element { background: #409EFF; }
+        .tech-tag.vant { background: #1989FA; }
+        .tech-tag.echarts { background: #AA344D; }
+        .tech-tag.opentiny { background: #409EFF; }
+        .tech-tag.mysql { background: #4479A1; }
+        .tech-tag.vscode { background: #007ACC; }
+        .tech-tag.apifox { background: #FF6C37; }
+        .tech-tag.wordpress { background: #21759B; }
+        .tech-tag.shopify { background: #7AB55C; }
+        .tech-tag.ajax { background: #4B8BBE; }
+        .tech-tag.axios { background: #671DDF; }
+        .tech-tag.electron { background: #47848F; }
+        .tech-tag.shopline { background: #4a4946; }
+
+        @media (max-width: 768px) {
+            .tech-tag {
+                padding: 4px 8px;
+                font-size: 0.8rem;
+            }
+        }
+
+        .tech-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .tech-left {
+            flex: 1;
+            min-width: 0; /* 防止内容溢出 */
+        }
+
+        .tech-right {
+            width: 500px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .meme-image {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .meme {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .meme:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 1024px) {
+            .tech-content {
+                flex-direction: column;
+            }
+
+            .tech-right {
+                width: 100%;
+                position: static;
+            }
+
+            .meme-image {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .meme {
+                width: calc(50% - 10px);
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .meme {
+                width: 100%;
+            }
+        }
+
+        .project-period {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-period:hover {
+            transform: translateX(10px);
+        }
+
+        .project-period h3 {
+            color: #4ECDC4;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .project-period h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 2px;
+        }
+
+        .project-period ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .project-period li {
+            margin: 8px 0;
+            color: #fff;
+            position: relative;
+        }
+
+        .project-period li::before {
+            content: '•';
+            color: #4ECDC4;
+            position: absolute;
+            left: -15px;
+        }
+
+        @media (max-width: 768px) {
+            .project-period {
+                margin-bottom: 15px;
+                padding: 10px;
+            }
+
+            .project-period:hover {
+                transform: none;
+            }
+        }
+
+        .experience-section {
+            padding: 80px 0;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(180deg, #4ECDC4 60%, rgba(78, 205, 196, 0.2));
+        }
+
+        .experience-card {
+            position: relative;
+            margin-left: 60px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 30px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4ECDC4;
+            box-shadow: 0 0 0 5px rgba(78, 205, 196, 0.2);
+        }
+
+        .experience-date {
+            color: #4ECDC4;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .experience-content h3 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .company-name {
+            color: #FF6B6B;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .job-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .project-list {
+            margin-top: 15px;
+        }
+
+        .project-list h4 {
+            color: #4ECDC4;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .project-list ul {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        .project-list li {
+            margin: 8px 0;
+            position: relative;
+            padding-left: 20px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .project-list li::before {
+            content: '•';
+            color: #4ECDC4;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .experience-timeline::before {
+                left: 20px;
+            }
+
+            .experience-card {
+                margin-left: 40px;
+                padding: 20px;
+            }
+
+            .experience-card::before {
+                left: -30px;
+            }
+
+            .experience-card:hover {
+                transform: none;
+            }
+        }
+
+        .timeline-content .experience-timeline {
+            margin-top: 25px;
+        }
+
+        .tech-improvement {
+            text-align: center; /* 使内容居中 */
+            padding: 20px; /* 增加内边距，确保内容不被遮挡 */
+            background: rgba(255, 255, 255, 0.1); /* 添加背景以增强可读性 */
+            border-radius: 10px; /* 添加圆角 */
+            margin: 20px 0; /* 增加上下外边距 */
+        }
+
+        .tech-improvement ul {
+            list-style: none; /* 去掉列表样式 */
+            padding: 0; /* 去掉内边距 */
+            margin: 0; /* 去掉外边距 */
+        }
+
+        .tech-improvement li {
+            margin: 10px 0; /* 调整列表项的上下间距 */
+            color: #fff; /* 确保文字颜色 */
+        }
+
+        @media (max-width: 768px) {
+            .tech-improvement {
+                padding: 15px; /* 在小屏幕上调整内边距 */
+                margin: 10px; /* 在小屏幕上调整外边距 */
+            }
+        }
+
+        .tech-name {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .project-highlight {
+            margin-top: 8px;
+            padding: 10px 15px;
+            background: rgba(78, 205, 196, 0.1);
+            border-left: 3px solid #4ECDC4;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95rem;
+            color: #4ECDC4;
+            transition: all 0.3s ease;
+        }
+
+        .project-highlight:hover {
+            background: rgba(78, 205, 196, 0.15);
+            transform: translateX(5px);
+        }
+
+        .project-highlight i {
+            margin-right: 8px;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 15px;
+            color: #FF6B6B;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .github-link:hover {
+            color: #ff8585;
+        }
+
+        .github-link i {
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .tech-improvement li {
+                margin: 12px 0;
+            }
+
+            .project-highlight {
+                padding: 8px 12px;
+            }
+        }
+
+        /* 添加个人项目的特殊样式 */
+        .personal-project {
+            color: #FF6B6B !important;
+            margin-top: 20px !important;
+        }
+
+        .personal-project-list li::before {
+            color: #FF6B6B;
+        }
+
+        .personal-project-list li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 更新协作标签样式 */
+        .collab-project {
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .role-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .role-tag {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .role-tag.main {
+            background: rgba(78, 205, 196, 0.2);
+            border: 1px solid rgba(78, 205, 196, 0.4);
+            color: #4ECDC4;
+        }
+
+        .role-tag.collab {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            color: #FF6B6B;
+        }
+
+        @media (max-width: 768px) {
+            .collab-project {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .role-tags {
+                margin-top: 4px;
+            }
+        }
+
+        /* 添加快速建站标签样式 */
+        .quick-build {
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .build-tag {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            background: rgba(78, 205, 196, 0.2);
+            border: 1px solid rgba(78, 205, 196, 0.4);
+            color: #4ECDC4;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .quick-build {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth; /* 添加平滑滚动效果 */
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 10%;
+                width: 80%;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding: 0 10px;
+            }
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            background: rgba(78, 205, 196, 0.2);
+            color: #4ECDC4;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 5px;
+            transition: transform 0.3s ease;
+            animation: fadeIn 0.5s ease forwards; /* 添加动画 */
+        }
+
+        .keyword-tag:hover {
+            transform: scale(1.1); /* 鼠标悬停时放大 */
+        }
+
+        .quote {
+            font-style: italic;
+            color: #ccc;
+            animation: fadeIn 0.5s ease forwards; /* 添加动画 */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 添加打字动画相关样式 */
+        .typing-text {
+            overflow: hidden;
+            /* white-space: nowrap; */
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: fadeIn 1s steps(40, end);
+            margin-top: 20px;
+            color: #4ecdc4;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content" data-aos="fade-up">
+            <h1 style="font-size: 3rem;">2024年度总结</h1>
+            <p style="font-size: 1.5rem;">技术成长 • 突破自我 • 持续进步</p>
+            <p class="typing-text" style="font-size: 1.2rem; word-wrap: break-word;">欢迎来到我的2024年度总结，让我们一起回顾这一年的成长历程~</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="keywords" style="text-align: center; margin: 40px 0; color: #fff;">
+            <h3 style="margin-bottom: 20px;">年度关键词：</h3>
+            <p>
+                <span class="keyword-tag">摸鱼工程师</span>
+                <span class="keyword-tag">究极ctrl acv工程师</span>
+                <span class="keyword-tag">前端开发工程师</span>
+                <span class="keyword-tag">anyscript高手</span>
+            </p>
+            <h3 style="margin: 20px;">真理名言：</h3>
+            <p class="quote">摸鱼，是打工人最后的倔强。</p>
+            <p class="quote" style="margin-top: 20px;">一杯茶，一包烟，一个bug改一天。</p>
+        </div>
+
+        <div class="timeline">
+            <!-- <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-content">
+                    <h2>技术负责人经历</h2>
+                    <p>在两家自研发公司担任技术负责人，负责多个重要项目的开发与管理</p>
+                </div>
+            </div> -->
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-content">
+                    <h2>项目经验</h2>
+                    
+                    <!-- 2024年7月-9月 -->
+                    <div class="project-period">
+                        <h3>2024年7月 - 9月</h3>
+                        <ul>
+                            <li>定制家具独立站开发</li>
+                            <li>定制家具后台管理系统开发</li>
+                        </ul>
+                    </div>
+
+                    <!-- 2024年10月 -->
+                    <div class="project-period">
+                        <h3>2024年10月</h3>
+                        <ul>
+                            <li>短剧独立站开发</li>
+                            <li>短剧后台管理系统开发</li>
+                        </ul>
+                    </div>
+
+                    <!-- 2024年11月-2025年1月 -->
+                    <div class="project-period">
+                        <h3>2024年11月 - 2025年1月</h3>
+                        <ul>
+                            <li>逆向海淘独立站开发</li>
+                            <li>逆向海淘后台管理系统开发</li>
+                            <li>ERP管理系统开发</li>
+                            <li>
+                                销售分析价格工具（Python）
+                                <div class="role-tags">
+                                    <span class="role-tag main">主要开发</span>
+                                    <span class="role-tag collab">协同开发：小师妹</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-content">
+                    <h2>技术提升</h2>
+                    <p>深入学习并实践：</p>
+                    <div class="tech-improvement">
+                        <ul>
+                            <li>
+                                <span class="tech-name">Vue3 + TypeScript</span>
+                            </li>
+                            <li>
+                              <span class="tech-name">Flex布局</span>
+                          </li>
+                            <li>
+                                <span class="tech-name">Electron 桌面应用开发</span>
+                                <div class="project-highlight">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>开源项目：vue2/3快速打包exe工具</span>
+                                    <!-- 如果有GitHub链接可以添加 -->
+                                    <a href="https://gitcode.com/2202_75337835/electron_dist" target="_blank" class="github-link">
+                                        <i class="fab fa-github"></i>
+                                        查看源码
+                                    </a>
+                                </div>
+                                <div class="project-highlight">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>开源工具：情侣租房通勤查询工具（对接高德地图）</span>
+                                    <!-- 如果有GitHub链接可以添加 -->
+                                    <a href="https://github.com/wang060502/Renting-a-house" target="_blank" class="github-link">
+                                        <i class="fab fa-github"></i>
+                                        查看源码
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="tech-name">前端工程化能力</span>
+                            </li>
+                            <li>
+                              <span class="tech-name">独自解决业务难题能力</span>
+                          </li>
+                          <li>
+                            <span class="tech-name">跨境电商运营知识</span>
+                        </li>
+                        <li>
+                          <span class="tech-name">Facebook和谷歌推广</span>
+                        </li>
+                        <li>
+                          <span class="tech-name">docker+Nginx</span>
+                        </li>
+                          <li>
+                            <span class="tech-name">项目从 0 到 1 开发能力</span>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-content">
+                    <h2>工作经历</h2>
+                    
+                    <div class="experience-timeline">
+                        <!-- 当前公司 -->
+                        <div class="experience-card" data-aos="fade-left">
+                            <div class="experience-date">2025年1月12日 - 至今</div>
+                            <div class="experience-content">
+                                <h3>前端开发+技术负责人</h3>
+                                <div class="company-name">第二家公司</div>
+                                <div class="job-description">
+                                    <p>担任技术负责人，负责多个重要项目的开发与管理，负责网站搭建、技术实施和优化</p>
+                                    <div class="project-list">
+                                        <h4>主要项目：</h4>
+                                        <ul>
+                                            <li>逆向海淘独立站开发</li>
+                                            <li>逆向海淘后台管理系统开发</li>
+                                            <li>ERP管理系统开发</li>
+                                            <li class="collab-project">
+                                                销售分析价格工具（Python）
+                                                <div class="role-tags">
+                                                    <span class="role-tag main">主要开发</span>
+                                                    <span class="role-tag collab">协同开发：小师妹</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 上一家公司 -->
+                        <div class="experience-card" data-aos="fade-left" data-aos-delay="100">
+                            <div class="experience-date">2024年7月24日 - 2025年1月10日</div>
+                            <div class="experience-content">
+                                <h3>网站开发+技术负责人+亚马逊运营</h3>
+                                <div class="company-name">第一家公司</div>
+                                <div class="job-description">
+                                    <p>担任技术负责人和亚马逊运营，主导核心项目的开发与管理，负责网站搭建、技术实施和优化，负责电商平台的日常运营与数据分析，提升店铺业绩</p>
+                                    <div class="project-list">
+                                        <h4>公司项目：</h4>
+                                        <ul>
+                                            <li>定制家具独立站开发</li>
+                                            <li>定制家具后台管理系统开发</li>
+                                            <li class="quick-build">
+                                                快速建站定制家具独立站
+                                                <span class="build-tag">快速建站</span>
+                                            </li>
+                                        </ul>
+                                        <h4 class="personal-project">个人项目：</h4>
+                                        <ul class="personal-project-list">
+                                            <li>短剧独立站开发</li>
+                                            <li>短剧后台管理系统开发</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats" data-aos="fade-up">
+            <div class="stat-item">
+                <div class="stat-number" id="blogCount">0+</div>
+                <div class="stat-label">技术博客文章</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="readCount">0+</div>
+                <div class="stat-label">文章阅读量</div>
+            </div>
+        </div>
+
+        <div class="achievement-grid">
+            <div class="achievement-card" data-aos="zoom-in">
+                <h3>技术博客</h3>
+                <p>在CSDN和掘金平台发布高质量技术文章，累计阅读量过万</p>
+            </div>
+            <div class="achievement-card" data-aos="zoom-in" data-aos-delay="100">
+                <h3>团队协作</h3>
+                <p>与优秀同事合作开发多个项目，建立良好的技术交流网络</p>
+            </div>
+            <div class="achievement-card" data-aos="zoom-in" data-aos-delay="200">
+                <h3>技术成长</h3>
+                <p>从专科实习到技术负责人，个人能力显著的提升</p>
+            </div>
+        </div>
+
+        <div class="tech-stack-section" data-aos="fade-up">
+            <h2 style="text-align: center; margin: 80px 0 40px;">技术栈</h2>
+            
+            <div class="tech-content">
+                <!-- 左侧技术栈 -->
+                <div class="tech-left">
+                    <div class="tech-category">
+                        <h3>基础语言</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag html">HTML5</span>
+                            <span class="tech-tag css">CSS3</span>
+                            <span class="tech-tag js">JavaScript</span>
+                            <span class="tech-tag jquery">jQuery</span>
+                            <span class="tech-tag ts">TypeScript</span>
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag php">PHP</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3>前端框架</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag vue">Vue.js</span>
+                            <span class="tech-tag electron">Electron</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3>后端框架</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag node">Node.js</span>
+                            <span class="tech-tag express">Express.js</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3>组件库</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag bootstrap">Bootstrap</span>
+                            <span class="tech-tag element">Element UI</span>
+                            <span class="tech-tag vant">Vant UI</span>
+                            <span class="tech-tag echarts">ECharts</span>
+                            <span class="tech-tag opentiny">OpenTiny</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3>数据库</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag mysql">MySQL</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3>常用软件</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag vscode">VSCode</span>
+                            <span class="tech-tag apifox">Apifox</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3>快速建站工具</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag wordpress">WordPress</span>
+                            <span class="tech-tag shopify">Shopify</span>
+                            <span class="tech-tag shopline">Shopline</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h3>其他技术</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag ajax">Ajax</span>
+                            <span class="tech-tag axios">Axios</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧梗图 -->
+                <div class="tech-right">
+                    <div class="meme-image" data-aos="fade-left" data-aos-delay="200">
+                        <img src="./image/image1.png" alt="编程梗图1" class="meme">
+                        <img src="./image/image2.png" alt="编程梗图2" class="meme">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="analysis-section" data-aos="fade-up">
+            <h2 style="text-align: center; margin: 80px 0 40px;">2024年度技能成长分析</h2>
+            
+            <!-- 雷达图 -->
+            <div class="chart-wrapper">
+                <h3 class="chart-title">技能水平分布</h3>
+                <div class="chart-container">
+                    <canvas id="skillsRadarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 饼图 -->
+            <div class="chart-wrapper">
+                <h3 class="chart-title">项目时间投入占比</h3>
+                <div class="chart-container">
+                    <canvas id="projectsPieChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 折线图 -->
+            <div class="chart-wrapper">
+                <h3 class="chart-title">全年工作强度变化</h3>
+                <div class="chart-container">
+                    <canvas id="timelineChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 个人年度总结 | 继续追求技术的极致</p>
+    </footer>
+
+    <button id="backToTop" style="display: none; position: fixed; bottom: 20px; right: 20px; background-color: #4ECDC4; color: white; border: none; border-radius: 5px; padding: 10px; cursor: pointer; z-index: 1000;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
+
+            // 创建图表的配置
+            const chartConfigs = {
+                radar: null,
+                pie: null,
+                line: null
+            };
+
+            // 创建观察器来监听图表容器的可见性
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const chartId = entry.target.querySelector('canvas').id;
+                        initChart(chartId);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            // 观察所有图表容器
+            document.querySelectorAll('.chart-wrapper').forEach(wrapper => {
+                observer.observe(wrapper);
+            });
+
+            // 初始化图表的函数
+            function initChart(chartId) {
+                switch(chartId) {
+                    case 'skillsRadarChart':
+                        initRadarChart();
+                        break;
+                    case 'projectsPieChart':
+                        initPieChart();
+                        break;
+                    case 'timelineChart':
+                        initLineChart();
+                        break;
+                }
+            }
+
+            function initRadarChart() {
+                const skillsCtx = document.getElementById('skillsRadarChart').getContext('2d');
+                chartConfigs.radar = new Chart(skillsCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['前端开发', '项目管理', '技术架构', '独立站开发', '团队协作', '问题解决'],
+                        datasets: [{
+                            label: '技能水平',
+                            data: [90, 85, 80, 95, 88, 92],
+                            fill: true,
+                            backgroundColor: 'rgba(78, 205, 196, 0.2)',
+                            borderColor: 'rgba(78, 205, 196, 1)',
+                            pointBackgroundColor: 'rgba(78, 205, 196, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(78, 205, 196, 1)'
+                        }]
+                    },
+                    options: {
+                        animation: {
+                            duration: 2000,
+                            easing: 'easeInOutQuart'
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
+                                grid: { color: 'rgba(255, 255, 255, 0.2)' },
+                                pointLabels: { color: '#fff' },
+                                ticks: {
+                                    color: '#fff',
+                                    backdropColor: 'transparent'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: { color: '#fff' }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function initPieChart() {
+                const projectsCtx = document.getElementById('projectsPieChart').getContext('2d');
+                chartConfigs.pie = new Chart(projectsCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['家具定制独立站', 'ERP系统', '海淘网站', '销售分析工具', '短剧独立站', '其他快速建站项目'],
+                        datasets: [{
+                            data: [25, 20, 15, 15, 15, 10],
+                            backgroundColor: [
+                                '#FF6B6B',
+                                '#4ECDC4',
+                                '#45B7D1',
+                                '#96CEB4',
+                                '#FFEEAD',
+                                '#D4A5A5'
+                            ]
+                        }]
+                    },
+                    options: {
+                        animation: {
+                            animateRotate: true,
+                            animateScale: true,
+                            duration: 2000,
+                            easing: 'easeInOutQuart'
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: { color: '#fff' }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function initLineChart() {
+                const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+                chartConfigs.line = new Chart(timelineCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2024/7', '2024/8', '2024/9', '2024/10', '2024/11', '2024/12', '2025/1'],
+                        datasets: [{
+                            label: '工作强度',
+                            data: [70, 85, 92, 95, 90, 88, 95],  // 调整为实际的7个月数据
+                            borderColor: '#4ECDC4',
+                            tension: 0.4,
+                            fill: true,
+                            backgroundColor: 'rgba(78, 205, 196, 0.1)'
+                        }]
+                    },
+                    options: {
+                        animation: {
+                            duration: 2000,
+                            easing: 'easeInOutQuart'
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,  // 设置最大值为100
+                                grid: { 
+                                    color: 'rgba(255, 255, 255, 0.1)',
+                                    drawBorder: false
+                                },
+                                ticks: { 
+                                    color: '#fff',
+                                    callback: function(value) {
+                                        return value + '%';  // 添加百分号
+                                    }
+                                }
+                            },
+                            x: {
+                                grid: { 
+                                    color: 'rgba(255, 255, 255, 0.1)',
+                                    drawBorder: false
+                                },
+                                ticks: { color: '#fff' }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: { color: '#fff' }
+                            },
+                            title: {
+                                display: true,
+                                text: '2024.7 - 2025.1 工作强度变化',
+                                color: '#fff',
+                                font: {
+                                    size: 16
+                                },
+                                padding: {
+                                    bottom: 30
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `工作强度: ${context.parsed.y}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 数字动画函数
+            function animateNumber(elementId, start, end, duration, isThousand = false) {
+                const element = document.getElementById(elementId);
+                const range = end - start;
+                const increment = range / (duration / 16);
+                let current = start;
+                
+                const animate = () => {
+                    current += increment;
+                    if (current >= end) {
+                        if (isThousand) {
+                            element.textContent = end.toLocaleString() + '+';
+                        } else {
+                            element.textContent = Math.round(end) + '+';
+                        }
+                        return;
+                    }
+                    if (isThousand) {
+                        element.textContent = Math.round(current).toLocaleString() + '+';
+                    } else {
+                        element.textContent = Math.round(current) + '+';
+                    }
+                    requestAnimationFrame(animate);
+                };
+
+                animate();
+            }
+
+            // 修改统计数字观察器中的数值
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 当统计部分可见时开始动画
+                        animateNumber('blogCount', 0, 13, 2000);
+                        animateNumber('readCount', 0, 20000, 2000, true); // 修改为 20000
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // 观察统计部分
+            const statsSection = document.querySelector('.stats');
+            statsObserver.observe(statsSection);
+
+            // 显示或隐藏回到顶部按钮
+            window.onscroll = function() {
+                const button = document.getElementById('backToTop');
+                if (document.body.scrollTop > window.innerHeight / 2 || document.documentElement.scrollTop > window.innerHeight / 2) {
+                    button.style.display = "block";
+                } else {
+                    button.style.display = "none";
+                }
+            };
+
+            // 点击按钮时回到顶部
+            document.getElementById('backToTop').onclick = function() {
+                document.documentElement.scrollIntoView({ behavior: 'smooth' }); // 使用平滑滚动
+            };
+        });
+    </script>
+</body>
+</html>
